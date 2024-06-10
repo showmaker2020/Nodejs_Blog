@@ -4,8 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "beautiful": "lint-staged",
     "start": "nodemon --inspect src/index.js",
-    "watch": "node-sass --watch src/resources/scss/app.scss --output src/public/css",
+    "watch": "node-sass --watch src/resources/scss --output src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,16 +22,29 @@
     "url": "https://github.com/showmaker2020/nodejs_blog/issues"
   },
   "homepage": "https://github.com/showmaker2020/nodejs_blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "hooks": {
+    "pre-commit": "npm test && npm run foo"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.3.2",
+    "mongoose-delete": "^1.0.2",
+    "mongoose-slug-updater": "^3.3.0"
   },
   "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
     "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
     "sass": "^1.75.0",
-    "script": "^0.1.4"
+    "script": "^0.0.12"
   }
 }
